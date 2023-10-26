@@ -3,6 +3,17 @@ import './App.css'
 import * as faceapi from 'face-api.js';
 
 function App() {
+  const [windowSize, setWindowSize] =React.useState({windowHeight:window.innerHeight,
+    windowWidth:window.innerWidth});
+    function detectSize(){
+      setWindowSize(
+      {windowHeight:window.innerHeight,
+      windowWidth:window.innerWidth})
+    }
+  React.useEffect(()=>{
+    window.addEventListener("resize",detectSize)
+    return ()=>window.removeEventListener("resize",detectSize)}
+    ,[windowSize]);
   const modals ="./models";
   const videoRef = useRef();
   const canvasRef = useRef();
@@ -18,7 +29,7 @@ function App() {
   function draw() {
     setInterval(async ()=>{
       const detections = await faceapi.detectAllFaces(videoRef.current,new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions();
-      const sizing={width:640,height:480};
+      const sizing={width:windowSize.windowWidth,height:windowSize.windowHeight};
       canvasRef.current.innerHTMl=faceapi.createCanvasFromMedia(videoRef.current);
       faceapi.matchDimensions(canvasRef.current,sizing);
       const detectionsForSize = faceapi.resizeResults(detections,sizing);
@@ -44,7 +55,7 @@ function App() {
     <>
     
        <video ref={videoRef}  className="video" crossOrigin='anonymous'  autoPlay></video>
-       <canvas ref={canvasRef}  className="canvas"  width='640' height='480'></canvas>
+       <canvas ref={canvasRef}  className="canvas"  width={windowSize.windowWidth} height={windowSize.windowHeight}></canvas>
    
     </>
   )

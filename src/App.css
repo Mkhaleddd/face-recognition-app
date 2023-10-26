@@ -16,6 +16,6 @@ body{
 .canvas{
     align-self: center;
     position: absolute;
-    top:5em;
+    top:4em;
     z-index: 10;
 }
