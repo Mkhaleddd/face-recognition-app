@@ -3,7 +3,7 @@ import './App.css'
 import * as faceapi from 'face-api.js';
 
 function App() {
-  const modals ="/models";
+  const modals ="public/models";
   const videoRef = useRef();
   const canvasRef = useRef();
   useEffect(()=>load(),[]);
