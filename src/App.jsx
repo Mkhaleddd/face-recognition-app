@@ -1,9 +1,10 @@
 import { useEffect,useRef,useState} from 'react'
+
 import './App.css'
 import * as faceapi from 'face-api.js';
 
 function App() {
-  const [windowSize, setWindowSize] =React.useState({windowHeight:window.innerHeight,
+  const [windowSize, setWindowSize] =useState({windowHeight:window.innerHeight,
     windowWidth:window.innerWidth});
     function detectSize(){
       setWindowSize(
