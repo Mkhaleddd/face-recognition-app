@@ -11,10 +11,11 @@ function App() {
       {windowHeight:window.innerHeight,
       windowWidth:window.innerWidth})
     }
-  React.useEffect(()=>{
+ useEffect(()=>{
     window.addEventListener("resize",detectSize)
     return ()=>window.removeEventListener("resize",detectSize)}
     ,[windowSize]);
+
   const modals ="./models";
   const videoRef = useRef();
   const canvasRef = useRef();
