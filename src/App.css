@@ -1,0 +1,21 @@
+body{
+    margin:0;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}  
+
+.video{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.canvas{
+    align-self: center;
+    position: absolute;
+    top:5em;
+    z-index: 10;
+}
